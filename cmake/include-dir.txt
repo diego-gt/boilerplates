@@ -1,0 +1,6 @@
+target_include_directories(<target> <visibility> <include-dir>)
+
+# for libs
+# target_include_directories(demo PUBLIC include)
+# for programs
+# target_include_directories(demo PRIVATE include)

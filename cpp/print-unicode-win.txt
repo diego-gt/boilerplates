@@ -1,0 +1,16 @@
+#include <fcntl.h>
+#include <io.h>
+#include <iostream>
+
+void print_at_unicode() {
+	// each time we change the translation mode of the stream, flush it to have the expected results
+	fflush(stdout);
+	_setmode(_fileno(stdout), _O_U16TEXT);
+	// print @ using unicode
+	std::wcout << L'\x0040' << "\n";
+	// reset stdout
+	fflush(stdout);
+	_setmode(_fileno(stdout), _O_TEXT);
+}
+
+

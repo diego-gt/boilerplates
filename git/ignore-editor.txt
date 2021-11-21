@@ -1,0 +1,9 @@
+# ---> Ignore editor config dirs
+.vscode/
+.idea/
+
+# from neovim
+# clangd cache
+.cache
+# ctags
+tags*
