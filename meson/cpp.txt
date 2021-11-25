@@ -1,0 +1,36 @@
+project(
+	'boilerplate',
+	'cpp',
+	version : '0.1',
+	default_options : [
+		'warning_level=3',
+		'cpp_std=c++20'
+	])
+
+add_project_arguments(['-stdlib=libc++'], language : 'cpp')
+add_project_link_arguments(['-stdlib=libc++'], language : 'cpp')
+
+public_headers = include_directories('include')
+
+sources = files([
+    'src/boilerplate.cpp'
+])
+
+libboilerplate = library(
+    'boilerplate',
+    sources,
+    install : true,
+    include_directories : public_headers
+)
+
+libboilerplate_dep = declare_dependency(
+    include_directories : public_headers,
+    link_with : libboilerplate
+)
+
+executable(
+    'demo',
+    'src/demo/main.cpp',
+    include_directories : public_headers,
+    link_with : libboilerplate
+)
